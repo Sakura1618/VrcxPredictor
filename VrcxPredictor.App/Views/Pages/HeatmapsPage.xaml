@@ -1,0 +1,67 @@
+<Page x:Class="VrcxPredictor.App.Views.Pages.HeatmapsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:local="clr-namespace:VrcxPredictor.App.Views.Pages"
+      Title="Heatmaps">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ui:CardControl Grid.Row="0" Padding="16" Margin="0,0,0,12" HorizontalContentAlignment="Left">
+                <Grid HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="热力图" FontSize="18" FontWeight="SemiBold"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,8,0,0"
+                               Text="提示：悬停可看具体数值；切换 分辨率/Tab 查看不同矩阵。"
+                               Opacity="0.75"/>
+
+                    <ui:Button Grid.Row="1" Grid.Column="1" Margin="8,8,0,0"
+                               Content="切换分辨率"
+                               Command="{Binding HeatmapsVM.ToggleResolutionCommand}"/>
+
+                    <ui:Button Grid.Row="1" Grid.Column="2" Margin="8,8,0,0"
+                               Content="返回仪表盘"
+                               Click="OnGoDashboard"/>
+                </Grid>
+            </ui:CardControl>
+
+            <ui:CardControl Grid.Row="1" Padding="0" Margin="0,0,0,12" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch">
+                <TabControl SelectedIndex="{Binding HeatmapsVM.SelectedTabIndex}" HorizontalAlignment="Left">
+                    <TabItem Header="预测概率">
+                        <local:HeatmapGrid />
+                    </TabItem>
+                    <TabItem Header="全局上线(归一化)">
+                        <local:HeatmapGrid />
+                    </TabItem>
+                </TabControl>
+            </ui:CardControl>
+
+            <ui:CardControl Grid.Row="2" Padding="16" HorizontalContentAlignment="Left">
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Text="说明" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <TextBlock Text="• 预测概率：基于会话占用矩阵 + 周权重指数衰减 + 高斯平滑。"
+                               Opacity="0.8" TextWrapping="Wrap"/>
+                    <TextBlock Text="• 全局上线：该表内所有 上线 事件的出现频率热力图（0~1 归一化），用于观察整体活跃时段。"
+                               Opacity="0.8" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                </StackPanel>
+            </ui:CardControl>
+        </Grid>
+    </ScrollViewer>
+</Page>

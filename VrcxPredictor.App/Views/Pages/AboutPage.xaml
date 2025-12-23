@@ -1,0 +1,33 @@
+﻿<Page x:Class="VrcxPredictor.App.Views.Pages.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="About">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ui:CardControl Margin="16" Padding="18" HorizontalContentAlignment="Stretch">
+            <StackPanel>
+                <TextBlock Text="关于" FontSize="22" FontWeight="SemiBold"/>
+                <TextBlock Text="{Binding Text}" TextWrapping="Wrap" Opacity="0.85" FontSize="14"/>
+                <Separator Margin="0,6,0,6"/>
+                <TextBlock Text="本项目作者" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="Sakura1618" TextWrapping="Wrap" Opacity="0.85" Margin="0,4,0,0"/>
+                <TextBlock Text="本项目地址" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock TextWrapping="Wrap" Opacity="0.85" Margin="0,4,0,0">
+                    <Hyperlink NavigateUri="https://github.com/Sakura1618/VrcxPredictor"
+                               RequestNavigate="OnNavigate">
+                        https://github.com/Sakura1618/VrcxPredictor
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Text="鸣谢" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock TextWrapping="Wrap" Opacity="0.85" Margin="0,4,0,0">
+                    <Run Text="Null-K 的项目" />
+                    <Hyperlink NavigateUri="https://github.com/Null-K/VRCX-Insight"
+                               RequestNavigate="OnNavigate">
+                        https://github.com/Null-K/VRCX-Insight
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </ui:CardControl>
+    </ScrollViewer>
+</Page>
