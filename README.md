@@ -1,5 +1,7 @@
 # VRCX Predictor 使用说明
 
+面开发者的文档：[点击跳转](/DEVELOPER_GUIDE.md)
+
 VRCX Predictor 是一个本地桌面工具：读取你电脑上的 `VRCX.sqlite3`（只读），把 VRChat 的 Online/Offline 记录做成统计与热力图，并给出“未来 2 小时上线概率”和“未来 24 小时最佳上线时间窗”。
 
 > 隐私：不联网、不上传，只读取本地 SQLite 文件。
